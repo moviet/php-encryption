@@ -13,6 +13,15 @@ use PHPUnit\Framework\TestCase;
 
 class PwsuitTest extends TestCase
 {			
+    public function testPhpVersionCompatible()
+    {
+        if (version_compare(PHP_VERSION, '5.6.0', '<')) {
+            $version = false;
+        }
+        
+        $this->assertFalse($version);
+    }
+    
     public function testCreateCostFactor()
     {
         $stub = $this->createMock(Pwsuit::class);
@@ -133,7 +142,7 @@ class PwsuitTest extends TestCase
     {
         $pass = Pwsuit::cost(10)->pwhash('Default','Test Password');
 
-        $rehash = Pwsuit::pwhash('Default','Test Password', $pass);
+        $rehash = Pwsuit::pwRehash('Default','Test Password', $pass);
 
         $this->assertNotEquals($rehash, $pass);
     }
