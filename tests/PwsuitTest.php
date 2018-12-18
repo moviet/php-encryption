@@ -17,18 +17,20 @@ class PwsuitTest extends TestCase
 {			
     public function testException()
     {
-        if (extension_loaded('openssl')) {
+        if (!extension_loaded('openssl')) {
             $this->expectException(RuntimeException::class);
             $this->expectExceptionMessage('Openssl Extension Unable to load');
         }
         
         if (extension_loaded('mbstring')) {
+            $this->markTestSkipped("Unable load mbstring extension");
             $thrown = false;
         }
         
         $this->assertFalse($thrown);    
         
         if (function_exists('hash_equals')) {
+            $this->markTestSkipped("Unable load mbstring extension");
             $thrown = false;
         }
         
