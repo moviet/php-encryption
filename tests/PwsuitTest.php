@@ -15,11 +15,11 @@ class PwsuitTest extends TestCase
 {			
     public function testPhpVersionCompatible()
     {
-        if (version_compare(PHP_VERSION, '5.6.0', '<')) {
-            $version = false;
+        if (version_compare(PHP_VERSION, '5.6.0', '>')) {
+            $version = true;
         }
         
-        $this->assertFalse($version);
+        $this->assertTrue($version);
     }
     
     public function testCreateCostFactor()
