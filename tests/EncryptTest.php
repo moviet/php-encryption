@@ -134,8 +134,12 @@ class EncryptTest extends TestCase
         if (!$key) {
             $this->expectException(EqualsException::class);
             $thrown = true;
-            $this->assertFalse($thrown);
+            $this->assertTrue($thrown);
         }	
+        
+        if ($decrypt !== 'Please Save Me')
+            $thrown = false;
+            $this->assertFalse($thrown);
     }
 
     public function testDecryptWithWrongEncryptData()
@@ -153,6 +157,10 @@ class EncryptTest extends TestCase
             $thrown = true; 
             $this->assertTrue($thrown);
         }	
+        
+        if ($decrypt !== 'Please Save Me')
+            $thrown = false;
+            $this->assertFalse($thrown);
     }
 
 
