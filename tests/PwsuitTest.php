@@ -19,11 +19,9 @@ class PwsuitTest extends TestCase
     {
         $this->expectException(RuntimeException::class);
         
-        if (extension_loaded('openssl')) {
+        if (!extension_loaded('openssl')) {
             $this->expectExceptionMessage('Openssl Extension Unable to load');
         }
-        
-        $this->assertFalse($thrown); 
         
         if (extension_loaded('mbstring')) {
             $thrown = false;
