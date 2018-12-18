@@ -56,8 +56,8 @@ class EncryptTest extends TestCase
     public function testPasswordAndKeyMustBeSecret()
     {
         $credentials = crypsic::authKey('My Password')
-                            ->hash('$2y$10$Foe1ldFKRUYRhDVtmAnlHeeHD7ik575RyaDNA5HxBj9aYQ4PRCp46')
-                            ->key('958450dd01075b835698704d4e5a164f');
+                             ->hash('$2y$10$Foe1ldFKRUYRhDVtmAnlHeeHD7ik575RyaDNA5HxBj9aYQ4PRCp46')
+                             ->key('958450dd01075b835698704d4e5a164f');
 
         $this->assertNull($credentials);
     }
