@@ -4,6 +4,8 @@ Crypsic - A speed metal encryption library for php
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://doge.mit-license.org)
 [![Usage](https://img.shields.io/badge/usage-easy-ff69b4.svg)](https://github.com/moviet/php-encryption)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/061155817d1442679335570e2762cd05)](https://www.codacy.com/app/moviet/php-encryption?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=moviet/php-encryption&amp;utm_campaign=Badge_Grade)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/moviet/php-encryption/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/moviet/php-encryption/?branch=master)
+[![Code Intelligence Status](https://scrutinizer-ci.com/g/moviet/php-encryption/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
 
 #### Crypsic is made to be Fast and Secure By Default
 
