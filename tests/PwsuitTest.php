@@ -8,6 +8,7 @@
 */
 namespace Moviet\Testing;
 
+use \RuntimeException;
 use Moviet\Heavy\Hash\Pwsuit;
 use PHPUnit\Framework\TestCase;
 
@@ -16,19 +17,23 @@ class PwsuitTest extends TestCase
     public function testExtensionRequirement()
     {
         if (extension_loaded('openssl')) {
-            $this->expectException(\RuntimeException::class);
+            $thrown = false;
         }
+        
+        $this->assertFalse($thrown);    
         
         if (extension_loaded('mbstring')) {
-            $this->expectException(\RuntimeException::class);
+            $thrown = false;
         }
+        
+        $this->assertFalse($thrown);    
         
         if (function_exists('hash_equals')) {
-            $this->expectException(\RuntimeException::class);
-            $thrown = true;
+            $thrown = false;
         }
         
-        $this->assertTrue($thrown);    
+        $this->assertFalse($thrown);    
+        $this->expectException(\RuntimeException::class);
     }
     
     public function testPhpVersionCompatible()
