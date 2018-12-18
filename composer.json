@@ -1,0 +1,38 @@
+{
+    "name": "moviet/php-encryption",
+    "description": "A speed metal encryption library for php",
+    "keywords": ["encryption", "password", "hash", "symmetric", "crypto", "cipher", "decryption", "AES"],
+    "homepage": "https://github.com/moviet/php-encryption",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Moviet",
+            "email": "snorthfed@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.0",
+        "ext-mbstring": "*",
+        "ext-openssl": "*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Moviet\\Heavy\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Moviet\\Testing\\": "tests/"
+        }
+     },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "v1.0-dev"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.5"
+    },
+    "minimum-stability": "dev"
+}
