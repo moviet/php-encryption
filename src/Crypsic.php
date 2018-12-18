@@ -51,8 +51,7 @@ class Crypsic
     /**
     * Check requirements
     * 
-    * @throws RunTimeException;
-    * 
+    * @throws RunTimeException; 
     */
     public function __construct()
     {
@@ -70,8 +69,8 @@ class Crypsic
     }
 
     /**
-    * Generate Mac and build a nice salt
-    * and run a key to validate
+    * Generate key from any storage
+    * and use a key to validate
     * 
     * @param string $key
     */
@@ -155,7 +154,7 @@ class Crypsic
     * 
     * @throws Moviet\Heavy\Exceptions\EqualsException
     * @throws Moviet\Heavy\Exceptions\EqualsException
-    * @return true
+    * @return bool
     */
     protected static function verify()
     {
@@ -178,7 +177,7 @@ class Crypsic
     * 
     * @param string
     * @param mixed
-    * @return string
+    * @return mixed
     */
     protected static function crypto($string, $nonce)
     {
@@ -191,7 +190,7 @@ class Crypsic
     * Generate and compact all the chunks here
     * and deliver the raw crypto
     * 
-    * @return string
+    * @return mixed
     */
     protected static function cipherBlock($string)
     {
@@ -260,7 +259,7 @@ class Crypsic
     /**
     * Here the bytes crypto must not be invalid
     * 
-    * @return string
+    * @return mixed
     */
     protected static function rotate($string)
     {
@@ -272,7 +271,7 @@ class Crypsic
     /**
     * Screw up the bytes size to compare
     * 
-    * @return string
+    * @return mixed
     */
     protected static function screw($string)
     {
@@ -284,7 +283,7 @@ class Crypsic
     /**
     * Round up the crypto in spesific length
     * 
-    * @return string
+    * @return mixed
     */
     protected static function round($string)
     {
@@ -297,7 +296,7 @@ class Crypsic
     * Now we host an assosiated salt
     * to authenticate the data
     * 
-    * @return string
+    * @return mixed
     */
     protected static function compare($string)
     {
