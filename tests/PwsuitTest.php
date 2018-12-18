@@ -16,11 +16,9 @@ class PwsuitTest extends TestCase
 {			
     public function testExtensionRequirement()
     {
-        if (extension_loaded('openssl')) {
-            $thrown = false;
+        if (!extension_loaded('openssl')) {
+            $this->expectException(\RuntimeException::class);
         }
-        
-        $this->assertFalse($thrown);    
         
         if (extension_loaded('mbstring')) {
             $thrown = false;
@@ -32,8 +30,7 @@ class PwsuitTest extends TestCase
             $thrown = false;
         }
         
-        $this->assertFalse($thrown);    
-        $this->expectException(\RuntimeException::class);
+        $this->assertFalse($thrown);           
     }
     
     public function testPhpVersionCompatible()
