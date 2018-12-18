@@ -52,13 +52,13 @@ It's meant the current crypto available is only for crafting symmetric encryptio
 
 * You can modify the cipher modes using our own mode functions like
   ```php
-  Crypsic::mode('CBC128') // AES-128-CBC
+  Crypsic::mode('CBC-128') // AES-128-CBC
   ```
 
   this is **optional** usage, if nothing, it will set to ```AES-256-CBC``` as **default mode**
   
   **notes** :
-  > If you want to set mode, _please use one for one operation_ or we're highly recommended that you **_ignore it_**, and set as default mode for easy usage.  
+  > If you want to set mode, _please use one for one operation_, if you don't know we're highly recommended that you **_ignore it_**, and set as default mode for easy usage.  
 
 #### Instant Encrypt And Decrypt
 
