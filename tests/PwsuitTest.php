@@ -17,18 +17,30 @@ class PwsuitTest extends TestCase
     {
         $stub = $this->createMock(Pwsuit::class);
 
-        $stub->expects(self::any())
-            ->method('cost')
-            ->will($this->returnValue(12));
+        $val1 = $stub->expects(self::any())
+                    ->method('cost')
+                    ->will($this->returnValue(12));
+        
+        $val2 = $stub->expects(self::any())
+                    ->method('cost')
+                    ->will($this->returnValue(12));
+        
+        $this->assertSame($val1, $val2);
     }
 
     public function testCreateMemoryCostFactor()
     {
         $stub = $this->createMock(Pwsuit::class);
 
-        $stub->expects(self::any())
-            ->method('memory')
-            ->will($this->returnValue(12));
+        $val1 = $stub->expects(self::any())
+                    ->method('memory')
+                    ->will($this->returnValue(1222));
+        
+        $val2 = $stub->expects(self::any())
+                    ->method('memory')
+                    ->will($this->returnValue(1222));
+        
+        $this->assertSame($val1, $val2);
     }
 
     public function testCreateTimeCostFactor()
