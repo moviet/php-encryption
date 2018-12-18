@@ -162,12 +162,6 @@ class Crypsic
             if (!password_verify(self::$auth, self::$hash)) {
                 throw new EqualsException('Password does not match');
             } 
-
-        } elseif (!is_null(self::suitSalt()) && is_null(self::$hash)) {
-            return true;	
-
-        } else {
-            throw new EqualsException("You have invalid key");
         }
     }
 
