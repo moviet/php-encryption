@@ -17,9 +17,8 @@ class PwsuitTest extends TestCase
 {			
     public function testException()
     {
-        $this->expectException(RuntimeException::class);
-        
-        if (!extension_loaded('openssl')) {
+        if (extension_loaded('openssl')) {
+            $this->expectException(RuntimeException::class);
             $this->expectExceptionMessage('Openssl Extension Unable to load');
         }
         
@@ -167,9 +166,8 @@ class PwsuitTest extends TestCase
 
         $rehash = Pwsuit::pwRehash('Default','Test Password', $pass);
         
-        $this->expectException(EqualsException::class);
-        
         if ($rehash !== $rehash) {
+            $this->expectException(EqualsException::class);
             $this->expectExceptionMessage('Pass Invalid');
         }
 
