@@ -13,6 +13,24 @@ use PHPUnit\Framework\TestCase;
 
 class PwsuitTest extends TestCase
 {			
+    public function testExtensionRequirement()
+    {
+        if (extension_loaded('openssl')) {
+            $this->expectException(\RuntimeException::class);
+        }
+        
+        if (extension_loaded('mbstring')) {
+            $this->expectException(\RuntimeException::class);
+        }
+        
+        if (function_exists('hash_equals')) {
+            $this->expectException(\RuntimeException::class);
+            $thrown = true;
+        }
+        
+        $this->assertTrue($thrown);    
+    }
+    
     public function testPhpVersionCompatible()
     {
         if (version_compare(PHP_VERSION, '5.6.0', '>')) {
