@@ -3,7 +3,6 @@ Crypsic - A speed metal encryption library for php
 [![Build Status](https://travis-ci.org/moviet/php-encryption.svg?branch=master)](https://travis-ci.org/moviet/php-encryption)
 [![License](http://img.shields.io/:license-mit-blue.svg?style=flat-square)](http://doge.mit-license.org)
 [![Usage](https://img.shields.io/badge/usage-easy-ff69b4.svg)](https://github.com/moviet/php-encryption)
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/061155817d1442679335570e2762cd05)](https://www.codacy.com/app/moviet/php-encryption?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=moviet/php-encryption&amp;utm_campaign=Badge_Grade)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/moviet/php-encryption/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/moviet/php-encryption/?branch=master)
 [![Code Intelligence Status](https://scrutinizer-ci.com/g/moviet/php-encryption/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
 
@@ -33,7 +32,7 @@ composer require "moviet/php-encryption"
 *	**Pwsuit** dedicated for non-coverable performed, so do not forget the password
 *	Do not use _`a same key`_ for many secret informations, you can do it well
 *	You may need a concern to manage the **_keys_** correctly, it must be treat a safely
-*	`Encryption` doesn't same as 's-e-c-u-r-i-t-y', so do not construct a bullet proof
+*	`Encryption` doesn't same as s-e-c-u-r-i-t-y, so do not construct a bullet proof
 *	You must follow the standard security design that suitable for your system
 
 ## Features
@@ -88,7 +87,7 @@ It's meant the current crypto available is only for crafting symmetric encryptio
    
 	 for PHP v7.0+ and Openssl pseudo random for PHP v5.6 by very happier
 
-* Then you must save a key belong encryption data, so you can confirm like so
+* After you save a key belong encryption data, so you can confirm like so
    ```php
    Crypsic::key('edfes73ccd0191jbabbdbab0101bdbeb10290abbaba1010edsf820')
    ```
@@ -107,10 +106,10 @@ It's meant the current crypto available is only for crafting symmetric encryptio
 
   on above will equivalent like
 
-  `password_hash('My password', PASSWORD_DEFAULT, options['cost' => 26])`
+  `password_hash('My password', PASSWORD_DEFAULT, ['cost'=>26])`
 
 
-* If you use new PHP v7.2+ you can try **Modern Hashes** like
+* If you use new PHP v7.2+ you can try **_Modern Hashes_** like
   ```php
   Pwsuit::pwhash('Argon2i','my Argon password is dadada')
   ```
