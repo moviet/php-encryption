@@ -10,15 +10,20 @@ namespace Moviet\Testing;
 
 use \RuntimeException;
 use Moviet\Heavy\Hash\Pwsuit;
+use Moviet\Heavy\Exceptions\EqualsException;
 use PHPUnit\Framework\TestCase;
 
 class PwsuitTest extends TestCase
 {			
-    public function testExtensionRequirement()
+    public function testException()
     {
-        if (!extension_loaded('openssl')) {
-            $this->expectException(\RuntimeException::class);
+        $this->expectException(RuntimeException::class);
+        
+        if (extension_loaded('openssl')) {
+            $this->expectExceptionMessage('Openssl Extension Unable to load');
         }
+        
+        $this->assertFalse($thrown); 
         
         if (extension_loaded('mbstring')) {
             $thrown = false;
@@ -163,6 +168,12 @@ class PwsuitTest extends TestCase
         $pass = Pwsuit::cost(10)->pwhash('Default','Test Password');
 
         $rehash = Pwsuit::pwRehash('Default','Test Password', $pass);
+        
+        $this->expectException(EqualsException::class);
+        
+        if ($rehash !== $rehash) {
+            $this->expectExceptionMessage('Pass Invalid');
+        }
 
         $this->assertNotEquals($rehash, $pass);
     }
