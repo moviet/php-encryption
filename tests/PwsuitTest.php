@@ -23,14 +23,12 @@ class PwsuitTest extends TestCase
         }
         
         if (extension_loaded('mbstring')) {
-            $this->markTestSkipped("Unable load mbstring extension");
             $thrown = false;
         }
         
         $this->assertFalse($thrown);    
         
         if (function_exists('hash_equals')) {
-            $this->markTestSkipped("Unable load mbstring extension");
             $thrown = false;
         }
         
