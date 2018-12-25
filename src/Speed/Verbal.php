@@ -73,11 +73,11 @@ abstract class Verbal
     const DEFAULT_THREAD_LENGTH = 6;
 
     /**
-    * Generate password compatible suits
-    * 
-    * @param string $algorithm
-    * @return string
-    */
+     * Generate password compatible suits
+     * 
+     * @param string $algorithm
+     * @return string
+     */
     public static function hashAlgo($algorithm)
     {
         switch ($algorithm) {
