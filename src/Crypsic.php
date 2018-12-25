@@ -24,18 +24,18 @@ use Moviet\Heavy\Exceptions\DecryptException;
 class Crypsic
 {
     /**
-    * @param string key
-    */
+     * @param string key
+     */
     protected static $key;
 
     /**
-    * @param string key
-    */
+     * @param string key
+     */
     protected static $has;
 
     /**
-    * @param string password
-    */
+     * @param string password
+     */
     protected static $auth;
 
     /**
@@ -44,15 +44,15 @@ class Crypsic
     protected static $hash;
 
     /**
-    * @param string cipher
-    */
+     * @param string cipher
+     */
     protected static $mode;
 
     /**
-    * Check requirements
-    * 
-    * @throws RunTimeException; 
-    */
+     * Check requirements
+     * 
+     * @throws RunTimeException; 
+     */
     public function __construct()
     {
         if (!extension_loaded('openssl')) {
@@ -69,22 +69,22 @@ class Crypsic
     }
 
     /**
-    * Generate key from any storage
-    * and use a key to validate
-    * 
-    * @param string $key
-    */
+     * Generate key from any storage
+     * and use a key to validate
+     * 
+     * @param string $key
+     */
     public static function key($key)
     {
         self::$has = self::h2bin($key);
     }
 
     /**
-    * Generate mac and build a nice salt
-    * this is use to authenticated crypto
-    * 
-    * @return string
-    */
+     * Generate mac and build a nice salt
+     * this is use to authenticated crypto
+     * 
+     * @return string
+     */
     protected static function suitSalt()
     {
         return hash_hmac(
@@ -93,10 +93,10 @@ class Crypsic
     }
 
     /**
-    * Load password from any request
-    * 
-    * @param string $password
-    */
+     * Load password from any request
+     * 
+     * @param string $password
+     */
     public static function authKey($password)
     {
         self::$auth = (string) $password;
@@ -105,10 +105,10 @@ class Crypsic
     }
 
     /**
-    * Load data password from any storage
-    * 
-    * @param string $datahash
-    */
+     * Load data password from any storage
+     * 
+     * @param string $datahash
+     */
     public function hash($datahash)
     {
         self::$hash = (string) $datahash;
@@ -117,45 +117,45 @@ class Crypsic
     }
 
     /**
-    * You encoded, you responsible to decoded
-    * just make it readable yayy
-    *  
-    * @param string $string
-    */
+     * You encoded, you responsible to decoded
+     * just make it readable yayy
+     *  
+     * @param string $string
+     */
     public static function listen($string)
     {
         return base64_encode(self::cipherBlock($string));
     }
 
     /**
-    * Just simply decoded the ciphertext
-    * 
-    * @param string $string
-    */
+     * Just simply decoded the ciphertext
+     * 
+     * @param string $string
+     */
     public static function look($string)
     {
         return self::record(base64_decode($string));
     }
 
     /**
-    * Check what the operation modes
-    * 
-    * @return string
-    */
+     * Check what the operation modes
+     * 
+     * @return string
+     */
     protected static function combatKey()
     {
         return self::suitSalt();
     }
 
     /**
-    * Check parameter key if they use password
-    * then verify the absolete if not then
-    * we can authentify next
-    * 
-    * @throws Moviet\Heavy\Exceptions\EqualsException
-    * @throws Moviet\Heavy\Exceptions\EqualsException
-    * @return bool
-    */
+     * Check parameter key if they use password
+     * then verify the absolete if not then
+     * we can authentify next
+     * 
+     * @throws Moviet\Heavy\Exceptions\EqualsException
+     * @throws Moviet\Heavy\Exceptions\EqualsException
+     * @return bool
+     */
     protected static function verify()
     {
         if (!is_null(self::$hash)) {
@@ -166,13 +166,13 @@ class Crypsic
     }
 
     /**
-    * Compact the string, cipher modes, a key and ivector
-    * and just make a zig-zag onto natively
-    * 
-    * @param string
-    * @param mixed
-    * @return mixed
-    */
+     * Compact the string, cipher modes, a key and ivector
+     * and just make a zig-zag onto natively
+     * 
+     * @param string
+     * @param mixed
+     * @return mixed
+     */
     protected static function crypto($string, $nonce)
     {
         return openssl_encrypt(
@@ -181,11 +181,11 @@ class Crypsic
     }
 
     /**
-    * Generate and compact all the chunks here
-    * and deliver the raw crypto
-    * 
-    * @return mixed
-    */
+     * Generate and compact all the chunks here
+     * and deliver the raw crypto
+     * 
+     * @return mixed
+     */
     protected static function cipherBlock($string)
     {
         $nonce = self::nonceCash();
@@ -194,13 +194,13 @@ class Crypsic
     }
 
     /**
-    * Generate mac, salt and bandage the raw crypto
-    * so we can get assosiated data
-    *  
-    * @param string
-    * @param mixed
-    * @return string
-    */
+     * Generate mac, salt and bandage the raw crypto
+     * so we can get assosiated data
+     *  
+     * @param string
+     * @param mixed
+     * @return string
+     */
     protected static function hmac($string, $nonce)
     {
         return hash_hmac(
@@ -209,10 +209,10 @@ class Crypsic
     }
 
     /**
-    * Generate initial vector for spesific cipher
-    * 
-    * @return mixed
-    */
+     * Generate initial vector for spesific cipher
+     * 
+     * @return mixed
+     */
     protected static function nonceCash()
     {
         if (!function_exists('random_bytes')) {
@@ -224,16 +224,16 @@ class Crypsic
     }
 
     /**
-    * Now we check the mac for something called 'noin bullet'  
-    * then check what the key that was generated
-    * if they use a password so we must proof it
-    * and compare the spesific length
-    * 
-    * @param string $string
-    * @throws Moviet\Heavy\Exceptions\EqualsException
-    * @throws Moviet\Heavy\Exceptions\DecryptException
-    * @return mixed
-    */
+     * Now we check the mac for something called 'noin bullet'  
+     * then check what the key that was generated
+     * if they use a password so we must proof it
+     * and compare the spesific length
+     * 
+     * @param string $string
+     * @throws Moviet\Heavy\Exceptions\EqualsException
+     * @throws Moviet\Heavy\Exceptions\DecryptException
+     * @return mixed
+     */
     protected static function record($string)
     {		
         if (!hash_equals(self::compare($string), self::screw($string))) {
@@ -251,10 +251,10 @@ class Crypsic
     }
 
     /**
-    * Here the bytes crypto must not be invalid
-    * 
-    * @return mixed
-    */
+     * Here the bytes crypto must not be invalid
+     * 
+     * @return mixed
+     */
     protected static function rotate($string)
     {
         return mb_substr(
@@ -263,10 +263,10 @@ class Crypsic
     }
 
     /**
-    * Screw up the bytes size to compare
-    * 
-    * @return mixed
-    */
+     * Screw up the bytes size to compare
+     * 
+     * @return mixed
+     */
     protected static function screw($string)
     {
         return mb_substr(
@@ -275,10 +275,10 @@ class Crypsic
     }
 
     /**
-    * Round up the crypto in spesific length
-    * 
-    * @return mixed
-    */
+     * Round up the crypto in spesific length
+     * 
+     * @return mixed
+     */
     protected static function round($string)
     {
         return mb_substr(
@@ -287,11 +287,11 @@ class Crypsic
     }
 
     /**
-    * Now we host an assosiated salt
-    * to authenticate the data
-    * 
-    * @return mixed
-    */
+     * Now we host an assosiated salt
+     * to authenticate the data
+     * 
+     * @return mixed
+     */
     protected static function compare($string)
     {
         return hash_hmac(
@@ -300,11 +300,11 @@ class Crypsic
     }
 
     /**
-    * Calculate key for acceptable cipher mode
-    * 
-    * @param string $key
-    * @return int
-    */
+     * Calculate key for acceptable cipher mode
+     * 
+     * @param string $key
+     * @return int
+     */
     protected static function guideKey($key)
     {
         $length = mb_strlen($key, Verbal::CHBYTES);
@@ -323,20 +323,20 @@ class Crypsic
     }
 
     /**
-    * Set cooperative cipher mode
-    * 
-    * @param string $cipher
-    */
+     * Set cooperative cipher mode
+     * 
+     * @param string $cipher
+     */
     public static function mode($cipher)
     {
         self::$mode = Verbal::BLOCK_MODE[$cipher];
     }
 
     /**
-    * Get cipher mode, if nothing, set to default mode
-    * 
-    * @return string
-    */
+     * Get cipher mode, if nothing, set to default mode
+     * 
+     * @return string
+     */
     protected static function getMode()
     {
         if (isset(self::$mode)) {
@@ -350,46 +350,46 @@ class Crypsic
     }
 
     /**
-    * Checking cipher operation mode
-    * 
-    * @return int
-    */
+     * Checking cipher operation mode
+     * 
+     * @return int
+     */
     protected static function calcKey()
     {
         return preg_replace('/[^0-9]/','', self::getMode());
     }
 
     /**
-    * We must generate a readable key
-    * 
-    * @param string $length
-    * @return string
-    */
+     * We must generate a readable key
+     * 
+     * @param string $length
+     * @return string
+     */
     protected static function b2hex($length)
     {
         return bin2hex($length);
     }
 
     /**
-    * We must reverse the key to generate cipher
-    * and get the requirement length
-    * 
-    * @param string $length
-    * @return string
-    */
+     * We must reverse the key to generate cipher
+     * and get the requirement length
+     * 
+     * @param string $length
+     * @return string
+     */
     protected static function h2bin($length)
     {
         return hex2bin($length);
     }
 
     /**
-    * Generate random key with minimum requirement
-    * if a length does look badass, says 4 bytes
-    * we prevent with calculation and make it readable
-    * 
-    * @param string $key
-    * @return string
-    */
+     * Generate random key with minimum requirement
+     * if a length does look badass, says 4 bytes
+     * we prevent with calculation and make it readable
+     * 
+     * @param string $key
+     * @return string
+     */
     public static function saveKey($key)
     {
         if (!function_exists('random_bytes')) {
@@ -403,10 +403,10 @@ class Crypsic
     }
 
     /**
-    * Get key to generate crypto
-    * 
-    * @return mixed
-    */
+     * Get key to generate crypto
+     * 
+     * @return mixed
+     */
     protected static function getKey()
     {
         return self::h2bin(self::$key);
