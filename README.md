@@ -128,12 +128,15 @@ It's meant the current crypto available is only for crafting symmetric encryptio
 
 * We attach new crazybility to protect your secret with password like below
    ```php
+   // First create Keystore and save
    Crypsic::saveKey('let me burn the typos')
+   
+   // Then create password and save
    Pwsuit::cost(16)->pwhash('Default','MyPassword')
    ```
 
    **Notes** : 
-	 > a **'cost'** length is optional, if higher may have **slow**, but that was better
+   > a **'cost'** length is optional, if higher may have **slow**, but that was better
 
 * Then to decrypt and verify your secret using **key with password** just simply
    ```php
@@ -145,7 +148,7 @@ It's meant the current crypto available is only for crafting symmetric encryptio
    ```
 
    **Notes** : 
-	 > Hash and encrypt data has **different results**, please use correctly
+   > Hash and encrypt data has **different results**, please use correctly
 
 * You can also use this lib as standalone to generate password and to verify
    ```php
