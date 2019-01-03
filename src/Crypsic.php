@@ -153,7 +153,6 @@ class Crypsic
      * we can authentify next
      * 
      * @throws Moviet\Heavy\Exceptions\EqualsException
-     * @throws Moviet\Heavy\Exceptions\EqualsException
      * @return bool
      */
     protected static function verify()
