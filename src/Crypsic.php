@@ -13,7 +13,6 @@
 namespace Moviet\Heavy;
 
 use \RuntimeException;
-use Moviet\Heavy\CrypsicKey;
 use Moviet\Heavy\Speed\Verbal;
 use Moviet\Heavy\Exceptions\EqualsException;
 use Moviet\Heavy\Exceptions\DecryptException;
